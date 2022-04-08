@@ -1,5 +1,13 @@
 <template>
    <div class="flex flex-col">
+       <div class="flex mb-3">
+           <router-link
+               :to="{ name :customers.create }"
+               class="bg-green-500 px-1 py-2 text-black rounded"
+            >
+               creer un client
+           </router-link>
+       </div>
   <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
       <div class="overflow-hidden">
@@ -10,50 +18,35 @@
                 #
               </th>
               <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                First
+                Nom
               </th>
               <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                Last
+                Telephone
               </th>
               <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                Handle
+                Satus
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr class="bg-gray-100 border-b">
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                Mark
+            <template v-for="customer in customers" :key="customer.id" >
+              <tr class="bg-gray-100 border-b" >
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900" v-text="customer.id"></td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap" v-text="customer.name">
+
               </td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                Otto
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"  v-text="customer.tel">
+
               </td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                @mdo
-              </td>
-            </tr>
-            <tr class="bg-white border-b">
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">2</td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                Jacob
-              </td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                Thornton
-              </td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                @fat
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+
+               v-bind:class="{ 'bg-green-100 text-green-800':customer.is_favourite==true }"
+              v-text="customer.is_favourite">
+
               </td>
             </tr>
-            <tr class="bg-gray-100 border-b">
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">3</td>
-              <td colspan="2" class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center">
-                Larry the Bird
-              </td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                @twitter
-              </td>
-            </tr>
+            </template>
+
           </tbody>
         </table>
       </div>
