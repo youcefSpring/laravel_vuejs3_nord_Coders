@@ -2,7 +2,7 @@
    <div class="flex flex-col">
        <div class="flex mb-3">
            <router-link
-               :to="{ url :'/create'}"
+               :to="{ name :customers.create }"
                class="bg-green-500 px-1 py-2 text-black rounded"
             >
                creer un client

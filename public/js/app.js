@@ -27651,6 +27651,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   setup: function setup() {
+    var _this = this;
+
     var form = (0,_vue_runtime_core__WEBPACK_IMPORTED_MODULE_2__.reactive)({
       name: '',
       phone: '',
@@ -27658,7 +27660,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     });
 
     var _useCustomers = (0,_services_customerServices__WEBPACK_IMPORTED_MODULE_1__["default"])(),
-        createCustomer = _useCustomers.createCustomer;
+        createCustomer = _useCustomers.createCustomer,
+        errors = _useCustomers.errors;
 
     var storeCustomer = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
@@ -27670,7 +27673,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return createCustomer.apply(void 0, _toConsumableArray(form));
 
               case 2:
-                router.push({
+                _this.$router.push({
                   name: 'customers.index'
                 });
 
@@ -27689,6 +27692,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     return {
       form: form,
+      errors: errors,
       storeCustomer: storeCustomer
     };
   }
@@ -27764,7 +27768,7 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   type: "submit",
   "class": "bg-blue-500 px-1 py-2 text-black rounded"
-}, null, -1
+}, "Save", -1
 /* HOISTED */
 );
 
@@ -27867,7 +27871,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
-      url: '/create'
+      name: $setup.customers.create
     },
     "class": "bg-green-500 px-1 py-2 text-black rounded"
   }, {
@@ -27877,7 +27881,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.customers, function (customer) {
+  }, 8
+  /* PROPS */
+  , ["to"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.customers, function (customer) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: customer.id,
       "class": "bg-gray-100 border-b"
@@ -28037,6 +28043,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 function useCustomers() {
   var customers = (0,vue__WEBPACK_IMPORTED_MODULE_2__.ref)([]);
+  var errors = (0,vue__WEBPACK_IMPORTED_MODULE_2__.ref)('');
 
   var getCustomers = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
@@ -28067,19 +28074,34 @@ function useCustomers() {
 
   var createCustomer = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(data) {
+      var createCustomerErrors, key;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              _context2.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default().post('api/customers');
+              _context2.prev = 0;
+              _context2.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().post('api/customers', data);
 
-            case 2:
+            case 3:
+              _context2.next = 9;
+              break;
+
+            case 5:
+              _context2.prev = 5;
+              _context2.t0 = _context2["catch"](0);
+              createCustomerErrors = _context2.t0.response.data.errors;
+
+              for (key in createCustomerErrors) {
+                errors.value += createCustomerErrors[key][0] + ' ';
+              }
+
+            case 9:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2);
+      }, _callee2, null, [[0, 5]]);
     }));
 
     return function createCustomer(_x) {
@@ -28089,6 +28111,7 @@ function useCustomers() {
 
   return {
     customers: customers,
+    errors: errors,
     getCustomers: getCustomers,
     createCustomer: createCustomer
   };

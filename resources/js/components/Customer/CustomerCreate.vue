@@ -1,4 +1,5 @@
 <template>
+
        <form class="space-y-6" @submit.prevent="storeCustomer">
           <div>
               <label
@@ -23,13 +24,14 @@
               id="is_favourite"
               v-model="form.is_favourite">
         </div>
-        <button type="submit" class="bg-blue-500 px-1 py-2 text-black rounded" ></button>
+        <button type="submit" class="bg-blue-500 px-1 py-2 text-black rounded"  >Save</button>
        </form>
 </template>
 
 <script>
 import { reactive } from '@vue/runtime-core'
 import useCustomers from '../../services/customerServices';
+
 
 
     export default {
@@ -40,15 +42,16 @@ import useCustomers from '../../services/customerServices';
                  is_favourite:''
             });
 
-            const  {createCustomer } = useCustomers();
+            const  {createCustomer, errors } = useCustomers();
 
             const storeCustomer = async() => {
                         await createCustomer(...form);
-                        router.push({name : 'customers.index'});
+                        this.$router.push({name : 'customers.index'});
             };
 
             return {
                 form,
+                errors,
                 storeCustomer
             };
         }
