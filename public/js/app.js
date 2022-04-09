@@ -27671,7 +27671,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
                 router.push({
-                  name: 'customer.index'
+                  name: 'customers.index'
                 });
 
               case 3:
@@ -27867,7 +27867,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
-      name: $setup.customers.create
+      url: '/create'
     },
     "class": "bg-green-500 px-1 py-2 text-black rounded"
   }, {
@@ -27877,9 +27877,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  }, 8
-  /* PROPS */
-  , ["to"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.customers, function (customer) {
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.customers, function (customer) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: customer.id,
       "class": "bg-gray-100 border-b"
@@ -27925,6 +27923,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _components_Customer_CustomerIndex_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Customer/CustomerIndex.vue */ "./resources/js/components/Customer/CustomerIndex.vue");
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./router */ "./resources/js/router/index.js");
+/* harmony import */ var _components_Customer_CustomerCreate_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Customer/CustomerCreate.vue */ "./resources/js/components/Customer/CustomerCreate.vue");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
@@ -27933,9 +27932,11 @@ alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
 
 
 
+
 (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
   components: {
-    CustomerIndex: _components_Customer_CustomerIndex_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    CustomerIndex: _components_Customer_CustomerIndex_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    CustomerCreate: _components_Customer_CustomerCreate_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
   }
 }).use(_router__WEBPACK_IMPORTED_MODULE_3__["default"]).mount("#app");
 

@@ -10,10 +10,12 @@ Alpine.start();
 import { createApp } from 'vue';
 import CustomerIndex from './components/Customer/CustomerIndex.vue';
 import router from './router';
+import CustomerCreate from './components/Customer/CustomerCreate.vue';
 
 createApp({
     components : {
-        CustomerIndex
+        CustomerIndex,
+        CustomerCreate
     }
 })
 .use(router)

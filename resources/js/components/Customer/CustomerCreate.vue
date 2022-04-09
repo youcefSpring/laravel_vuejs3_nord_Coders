@@ -44,7 +44,7 @@ import useCustomers from '../../services/customerServices';
 
             const storeCustomer = async() => {
                         await createCustomer(...form);
-                        router.push({name : 'customer.index'});
+                        router.push({name : 'customers.index'});
             };
 
             return {
